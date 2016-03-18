@@ -193,11 +193,6 @@ class API_Item_Open_Weixin
                     <ArticleCount>".count($dataArr)."</ArticleCount>
                     <Articles>";
         foreach($dataArr as $d){
-        	
-			$title = mb_convert_encoding(trim($d['Title']), "UTF-8","GBK");
-			if($desc){
-				$desc = mb_convert_encoding(trim($d['Description']), "UTF-8","GBK");
-			}
             $textTpl = "
                          <item>
                          <Title><![CDATA[%s]]></Title>
@@ -206,7 +201,7 @@ class API_Item_Open_Weixin
                          <Url><![CDATA[%s]]></Url>
                          </item>";
 
-            $xmlStr .= sprintf($textTpl,$title, $desc, $d['PicUrl'], $d['Url']);
+            $xmlStr .= sprintf($textTpl,$d['Title'], $d['Description'], $d['PicUrl'], $d['Url']);
         }
         $xmlStr .= "
                     </Articles>

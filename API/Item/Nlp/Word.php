@@ -5,10 +5,10 @@
 */
 class API_Item_Nlp_Word
 {
-    private static $seggerUrl = "http://service.api.xxx.com/api/segger.api";// "http://10.15.185.107:8080/api/segger.api"; #分词的api地址
+    private static $seggerUrl = "http://service.api.xxx.com/api/segger.api";//  #分词的api地址
     
     /**
-     * 阿拉丁词库分词
+     * 分词
      */
     public static function aladsegger($paramArr) {
 		$options = array(
@@ -20,7 +20,6 @@ class API_Item_Nlp_Word
 		extract($options);
         
         $url = "http://service.api.xxx.com/api/aladinsegger.api";
-        //$url = "http://10.15.185.126:8080/api/aladinsegger.api";
         $outArr = array();
         $content = strip_tags(mb_convert_encoding($content,"utf-8","gbk"));
         $data = API_Http::curlPost(array('url'=>$url,'postdata'=>array('txt'=>$content)));
@@ -277,7 +276,7 @@ class API_Item_Nlp_Word
 		extract($options);
         if(!$text)return '';
         
-        $fp = fsockopen("10.15.184.103", 12308, $errno, $errstr, 30);
+        $fp = fsockopen("x.x.x.x", 12308, $errno, $errstr, 30);
         $contents = "";
         if ($fp) {
             $text = mb_convert_encoding($text, "UTF-8","GBK");
